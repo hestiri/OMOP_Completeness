@@ -1,0 +1,22 @@
+---
+title: "OMOP_COMP_TEST"
+author: "Hossein Estiri"
+date: "December 17, 2015"
+output: html_document
+---
+
+This is an R Markdown document for OMOP Completeness Test. 
+
+I am going to embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+I am going to also embed plots, for example:
+
+```{r, echo=FALSE}
+plot(cars)
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
