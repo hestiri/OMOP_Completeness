@@ -1,22 +1,7 @@
-####Completeness Test Demo#######
-# install.packages("data.table")
-#require(data.table)
+install.packages("data.table");require(data.table)
 
+# set the working directory
 setwd("~/OneDrive UW/OneDriveBusiness/omop/UW_Evaluation_2015-01-14")
-# require(dplyr)
-# require(sqldf)
-
-path = "~/OneDrive UW/OneDriveBusiness/omop/UW_Evaluation_2015-01-14"
-# 
-filenames <- list.files(path)
-filenames[1]
-###TRY APPLY or a LOOP to read all tables in the directory automatically
-##lapply(filenames, function(i){read.table(filenames[i], header = T, sep="|",quote = "",fill = TRUE)})
-dir()[2]
-# lapply(dir(),function(i) {assign(i, read.table(i, header = T, sep="|",quote = "",fill = TRUE))})
-
-
-# for (i in 1:length(filenames)) assign(filenames[i], read.table(filenames[i], header = T, sep="|",quote = "",fill = TRUE))
 
 for (i in 1:length(dir())) assign(dir()[i], read.table(dir()[i], header = T, sep="|",quote = "",fill = TRUE))
 
