@@ -18,7 +18,8 @@ setwd("~/...")
 5. In `Comp_prep.R`, set "path" to the directory that contains ROSITA-ready .txt files
 ***NOTE: if your OMOP files are in another format, you'll have to define the right parameters (header, sep, quote, fill, etc.) in `read.table`
 ```{r, echo=FALSE}
-for (i in 1:length(filenames)) assign(filenames[i], read.table(paste(path,"/",filenames[i],sep=""), header = T, sep="|",quote = "",fill = TRUE))
+for (i in 1:length(filenames)) assign(filenames[i], 
+                                      read.table(paste(path,"/",filenames[i],sep=""), header = T, sep="|",quote = "",fill = TRUE))
 
 ```
 6. After making these adjustments to the `Comp_prep.R`, run `Comp_test.R`.

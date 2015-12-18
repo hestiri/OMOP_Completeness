@@ -1,31 +1,22 @@
 ####################################
 ###preparations to run the analysis
 ####################################
+#set the working directory to the same directory that you have cloned these tiles
+setwd("~/Google Drive/DQ_Tests/OMOP_Completeness")           
 packages <- c("data.table","dplyr")
-install.packages(packages, dependencies = TRUE)
+# install.packages(packages, dependencies = TRUE)
 require(data.table);require(dplyr)
 # set the path to the directory that contains OMOP .txt tables
 path = "~/OneDrive UW/OneDriveBusiness/omop/UW_Evaluation_2015-01-14"
-
+filenames <- list.files(path)
 
 ##reading and storing pre-ROSITA *.txt tables
 for (i in 1:length(filenames)) assign(filenames[i], read.table(paste(path,"/",filenames[i],sep=""), header = T, sep="|",quote = "",fill = TRUE))
 
-
 ##creating a table that includes table names and column names to store level of importance, date of the DQ test, and frequencies
-
-# ##this is not essential
-# ##saving names of loaded tables in a new vecotor
-# table.names <- 
-#   c(ls())
-# #crate a data frame to store table names
-# table.nam <- data.frame(table.names)
-# table.nam
-# ##this is not essential
 
 ##store test date in mm-YYYY format
 test_date <- as.character(format(Sys.Date(),"%m-%Y"))
-
 
 ##at this step, manually assign importance level values for each column in each table
 ### X=Extremely important, H= Highly Important M= Medium Importance, L=Low Importance
@@ -70,3 +61,4 @@ rm(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10)
 DQTBL$MSFRQ <- 1
 DQTBL$FRQ <- 0
 DQTBL$UNIQFRQ <- 0
+
