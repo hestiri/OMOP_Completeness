@@ -2,11 +2,11 @@
 ############ COMPLETENESS ANALYSIS ########
 ###################      ##################
             
-  
+source("Comp_prep.R")
+
 ################################################################
 ####This loop goes through all tables and columns in each tables and generates a code for the NULL or NA values
 ###############################################################
-
 
 for (j in 1: length(unique(DQTBL$TabNam))) 
   ##DQTBL$TabNam has all table names
@@ -27,7 +27,7 @@ for (i in 1:length(get(TB)))
   {
   col <- names(get(TB))[i]
   ##extracting column names
-  DQIMPLVL <- filter(DQTBL, ColNam == col)
+  DQIMPLVL <- filter(DQTBL, DQTBL$ColNam == col)
   ##subsetted DQTBL for each column 
   LVL <- DQIMPLVL[,3]
   ##extracted the importance value from column 3 of the subsetted row
