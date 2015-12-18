@@ -2,66 +2,7 @@
 ############ COMPLETENESS ANALYSIS ########
 ###################      ##################
             
-      ##general
-      ##store test date in mm-YYYY format
-      test_date <- as.character(format(Sys.Date(),"%m-%Y"))
-
-
-##creating a table that includes table names and column names to store level of importance, date of the DQ test, and frequencies
-
-                  ##this is not essential
-                  ##saving names of loaded tables in a new vecotor
-                  table.names <- c(ls())
-                  #crate a data frame to store table names
-                  table.nam <- data.frame(table.names)
-                  table.nam
-                  ##this is not essential
-
-##at this step, manually assign importance level values for each column in each table
-                  ### X=Extremely important, H= Highly Important M= Medium Importance, L=Low Importance
-                  ###make sure number of columns are correct
-                  #provider has 14 columns
-                  d1 <- data.frame(TabNam="provider",ColNam=c(names(provider)), DQLVL=c("H","L","L","L","L","L","L","L","L","L","L","L","L","L"), 
-                                   abbr="prvd", test_date)
-                  #care site has 10 columns
-                  d2 <- data.frame(TabNam="care_site",ColNam=c(names(care_site)), DQLVL=c("H","H","L","L","L","L","L","L","L","L"), 
-                                   abbr="crst", test_date)
-                  #condition_occurrence has 15 columns
-                  d3 <- data.frame(TabNam="condition_occurrence",ColNam=c(names(condition_occurrence)), DQLVL=c("H","L","L","L","L","L","L","L","L","L","L","L","L","L","L"),
-                                   abbr="cndoc", test_date)
-                  #death has 9 columns
-                  d4 <- data.frame(TabNam="death",ColNam=c(names(death)), DQLVL=c("H","L","L","L","L","L","L","L","L"),
-                                   abbr="deth", test_date)
-                  #drug_exposure has 20 columns
-                  d5 <- data.frame(TabNam="drug_exposure",ColNam=c(names(drug_exposure)), DQLVL=c("H","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L"),
-                                   abbr="drgex", test_date)
-                  #observation has 21 columns
-                  d6 <- data.frame(TabNam="observation",ColNam=c(names(observation)), DQLVL=c("H","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L"),
-                                   abbr="obsr", test_date)
-                  #organization has 8 columns
-                  d7 <- data.frame(TabNam="organization",ColNam=c(names(organization)), DQLVL=c("H","L","L","L","L","L","L","L"),
-                                   abbr="org", test_date)
-                  #person has 17 columns
-                  d8 <- data.frame(TabNam="person",ColNam=c(names(person)), DQLVL=c("X","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L","L"),
-                                   abbr="prsn", test_date)
-                  #procedure_occurrence has 12 columns
-                  d9 <- data.frame(TabNam="procedure_occurrence",ColNam=c(names(procedure_occurrence)), DQLVL=c("H","L","L","L","L","L","L","L","L","L","L","L"),
-                                   abbr="prcoc", test_date)
-                  # visit_occurrence has 12 columns
-                  d10 <- data.frame(TabNam="visit_occurrence",ColNam=c(names(visit_occurrence)), DQLVL=c("H","L","L","L","L","L","L","L","L","L","L","L"),
-                                    abbr="vstoc", test_date)
-                  
-# create the DQTBL with all the values
-DQTBL <- rbind(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10)
-
-#remove the single tables
-rm(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10)
-
-
-##################################
-##NOW LET THE FUN BEGIN!
-#################################
-
+  
 ################################################################
 ####This loop goes through all tables and columns in each tables and generates a code for the NULL or NA values
 ###############################################################
