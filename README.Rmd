@@ -5,18 +5,20 @@ date: "December 17, 2015"
 output: html_document
 ---
 
-This is an R Markdown document for OMOP Completeness Test. 
+This is an R Markdown document for OMOP Completeness Test. This test is written to function on ROSITA-ready .txt files. 
 
-I am going to embed an R code chunk like this:
-
-```{r}
-summary(cars)
-```
-
-I am going to also embed plots, for example:
-
+To run the test:
+1. Clone the entire repository on your computer.
+2. Open `Comp_prep.R` in R Studio
+3. In `Comp_prep.R`, set the working directory to the same directory that you have cloned these tiles
 ```{r, echo=FALSE}
-plot(cars)
+setwd("~/...")
 ```
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+4. Make sure to install packages. Once you've installed them, you can comment out `install.packages(packages, dependencies = TRUE)`
+5. In `Comp_prep.R`, set "path" to the directory that contains ROSITA-ready .txt files
+***NOTE: if your OMOP files are in another format, you'll have to define the right parameters (header, sep, quote, fill, etc.) in `read.table`
+```{r, echo=FALSE}
+for (i in 1:length(filenames)) assign(filenames[i], read.table(paste(path,"/",filenames[i],sep=""), header = T, sep="|",quote = "",fill = TRUE))
 
+```
+6. After making these adjustments to the `Comp_prep.R`, run `Comp_test.R`.
