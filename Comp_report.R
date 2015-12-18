@@ -1,19 +1,28 @@
-
 ################################################################################
 ##extracting DQ Issues from the table and storing them into a long table called RESULTS
 ################################################################################
+                # ULTIMATELY AN AUTOMATED PROCEDURE WILL REPLACE THE FOLLOWING CODES   
+                # SOMETHING LIKE THE BELOW
+                 # for (i in 1:length(filenames)) assign(paste("ISSUES",filenames[i],sep = ""), 
+                                                              #WORKS UP TO ABOUT HERE
+                      #                                       (sapply(
+                      #                                         1:dim(get(filenames[i]))[2], function(j) {c(care_site.txt[grep("_MS_", care_site.txt[,j]), j])}
+                      #                                               )
+                      #                                        )
+                      #                                       )
+
 
 ##extracting DQ Issues from the table and storing them into a new list
-ISSUES1 <- sapply(1:dim(care_site)[2], function(j) {c(care_site[grep("_MS_", care_site[,j]), j])})
-ISSUES2 <- sapply(1:dim(condition_occurrence)[2], function(j) {c(condition_occurrence[grep("_MS_", condition_occurrence[,j]), j])})
-ISSUES3 <- sapply(1:dim(death)[2], function(j) {c(death[grep("_MS_", death[,j]), j])})
-ISSUES4 <- sapply(1:dim(drug_exposure)[2], function(j) {c(drug_exposure[grep("_MS_", drug_exposure[,j]), j])})
-ISSUES5 <- sapply(1:dim(observation)[2], function(j) {c(observation[grep("_MS_", observation[,j]), j])})
-ISSUES6 <- sapply(1:dim(organization)[2], function(j) {c(organization[grep("_MS_", organization[,j]), j])})
-ISSUES7 <- sapply(1:dim(person)[2], function(j) {c(person[grep("_MS_", person[,j]), j])})
-ISSUES8 <- sapply(1:dim(procedure_occurrence)[2], function(j) {c(procedure_occurrence[grep("_MS_", procedure_occurrence[,j]), j])})
-ISSUES9 <- sapply(1:dim(provider)[2], function(j) {c(provider[grep("_MS_", provider[,j]), j])})
-ISSUES10 <- sapply(1:dim(visit_occurrence)[2], function(j) {c(visit_occurrence[grep("_MS_", visit_occurrence[,j]), j])})
+ISSUES1 <- sapply(1:dim(care_site.txt)[2], function(j) {c(care_site.txt[grep("_MS_", care_site.txt[,j]), j])})
+ISSUES2 <- sapply(1:dim(condition_occurrence.txt)[2], function(j) {c(condition_occurrence.txt[grep("_MS_", condition_occurrence.txt[,j]), j])})
+ISSUES3 <- sapply(1:dim(death.txt)[2], function(j) {c(death.txt[grep("_MS_", death.txt[,j]), j])})
+ISSUES4 <- sapply(1:dim(drug_exposure.txt)[2], function(j) {c(drug_exposure.txt[grep("_MS_", drug_exposure.txt[,j]), j])})
+ISSUES5 <- sapply(1:dim(observation.txt)[2], function(j) {c(observation.txt[grep("_MS_", observation.txt[,j]), j])})
+ISSUES6 <- sapply(1:dim(organization.txt)[2], function(j) {c(organization.txt[grep("_MS_", organization.txt[,j]), j])})
+ISSUES7 <- sapply(1:dim(person.txt)[2], function(j) {c(person.txt[grep("_MS_", person.txt[,j]), j])})
+ISSUES8 <- sapply(1:dim(procedure_occurrence.txt)[2], function(j) {c(procedure_occurrence.txt[grep("_MS_", procedure_occurrence.txt[,j]), j])})
+ISSUES9 <- sapply(1:dim(provider.txt)[2], function(j) {c(provider.txt[grep("_MS_", provider.txt[,j]), j])})
+ISSUES10 <- sapply(1:dim(visit_occurrence.txt)[2], function(j) {c(visit_occurrence.txt[grep("_MS_", visit_occurrence.txt[,j]), j])})
 
 
 #is.list(ISSUES)
@@ -60,8 +69,7 @@ head(RESULTS, 100)
 
 
 #####plotting
-library(ggplot2)
-library(gridExtra)
+
 Flagplot <- ggplot(data=DQTBL, aes(x=ColNam, y=MSFRQ, fill=factor(DQLVL))) +
   geom_bar(stat="identity", width = 1) +
   scale_fill_manual(values=c("red","green","dark red")) +
