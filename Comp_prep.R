@@ -1,14 +1,15 @@
 ####################################
 ###preparations to run the analysis
 ####################################
-packages <- c("data.table")
+packages <- c("data.table","dplyr")
 install.packages(packages, dependencies = TRUE)
-require(data.table)
-# set the working directory to the directory that contains OMOP .txt tables
-setwd("~/OneDrive UW/OneDriveBusiness/omop/UW_Evaluation_2015-01-14")
+require(data.table);require(dplyr)
+# set the path to the directory that contains OMOP .txt tables
+path = "~/OneDrive UW/OneDriveBusiness/omop/UW_Evaluation_2015-01-14"
+
 
 ##reading and storing pre-ROSITA *.txt tables
-for (i in 1:length(dir())) assign(dir()[i], read.table(dir()[i], header = T, sep="|",quote = "",fill = TRUE))
+for (i in 1:length(filenames)) assign(filenames[i], read.table(paste(path,"/",filenames[i],sep=""), header = T, sep="|",quote = "",fill = TRUE))
 
 
 ##creating a table that includes table names and column names to store level of importance, date of the DQ test, and frequencies
