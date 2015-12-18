@@ -2,12 +2,12 @@
 ###preparations to run the analysis
 ####################################
 #set the working directory to the same directory that you have cloned these tiles
-setwd("~/Google Drive/DQ_Tests/OMOP_Completeness")           
-packages <- c("data.table","dplyr")
+setwd("~/...")           
+packages <- c("data.table","dplyr","ggplot2","gridExtra")
 # install.packages(packages, dependencies = TRUE)
-require(data.table);require(dplyr)
+require(data.table);require(dplyr);require(ggplot2);require(gridExtra)
 # set the path to the directory that contains OMOP .txt tables
-path = "~/OneDrive UW/OneDriveBusiness/omop/UW_Evaluation_2015-01-14"
+path = "~/..."
 filenames <- list.files(path)
 
 ##reading and storing pre-ROSITA *.txt tables
