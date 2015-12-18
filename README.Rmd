@@ -6,6 +6,7 @@ output: html_document
 ---
 
 This is an R Markdown document for OMOP Completeness Test. This test is written to function on ROSITA-ready .txt files. 
+Also, the codes are written for UW OMOP Warehouse pre-load which only included 10 of the OMOP tables. To process more OMOP tables, codes need to be manually edited -- which still should not be substantive work. 
 
 To run the test:
 1. Clone the entire repository on your computer.
@@ -23,3 +24,4 @@ for (i in 1:length(filenames)) assign(filenames[i],
 
 ```
 6. After making these adjustments to the `Comp_prep.R`, run `Comp_test.R`.
+7. After running the `Comp_test.R`, run `Comp_report.R` to generate reports.
