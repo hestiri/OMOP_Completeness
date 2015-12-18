@@ -1,24 +1,6 @@
-install.packages("data.table");require(data.table)
-
-# set the working directory
-setwd("~/OneDrive UW/OneDriveBusiness/omop/UW_Evaluation_2015-01-14")
-
-
-for (i in 1:length(dir())) assign(dir()[i], read.table(dir()[i], header = T, sep="|",quote = "",fill = TRUE))
-
- # ##READ OMOP TABLES with read.table (slower)
-            provider <- read.table("UW_Evaluation_provider.txt", header = T, sep="|",quote = "",fill = TRUE)
-            care_site <- read.table("UW_Evaluation_care_site.txt", header = T, sep="|",quote = "",fill = TRUE)
-            condition_occurrence <- read.table("UW_Evaluation_condition_occurrence.txt", header = T, sep="|", quote = "",fill = TRUE)
-            death <- read.table("UW_Evaluation_death.txt", header = T, sep="|",quote = "",fill = TRUE)
-            drug_exposure <- read.table("UW_Evaluation_drug_exposure.txt", header = T, sep="|",quote = "",fill = TRUE)
-            observation <- read.table("UW_Evaluation_observation.txt", header = T, sep="|",quote = "",fill = TRUE)
-            organization <- read.table("UW_Evaluation_organization.txt", header = T, sep="|",quote = "",fill = TRUE)
-            person <- read.table("UW_Evaluation_person.txt", header = T, sep="|",quote = "",fill = TRUE)
-            procedure_occurrence <- read.table("UW_Evaluation_procedure_occurrence.txt", header = T, sep="|",quote = "",fill = TRUE)
-            visit_occurrence <- read.table("UW_Evaluation_visit_occurrence.txt", header = T, sep="|",quote = "",fill = TRUE)
-
-###fread doesn't work
+###########################################
+############ COMPLETENESS ANALYSIS ########
+###################      ##################
             
       ##general
       ##store test date in mm-YYYY format
