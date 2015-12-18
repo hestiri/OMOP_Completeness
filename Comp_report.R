@@ -130,6 +130,7 @@ plot6 <- ggplot(data=organization_id, aes(x=TabNam, y=UNIQFRQ)) +
   ylab("Frequency of Unique Values")
 
 
+
 place_of_service_source_value<- filter(DQTBL, ColNam == "place_of_service_source_value")
 place_of_service_source_value$flag <- as.factor(ifelse(place_of_service_source_value$FRQ > mean(place_of_service_source_value$FRQ), "Not OK", "OK" ))
 
